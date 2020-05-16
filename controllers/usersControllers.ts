@@ -1,12 +1,8 @@
 import { Context } from "https://deno.land/x/oak/mod.ts";
 import { db } from "../server.ts";
-import { BodyJson } from "https://deno.land/x/oak/request.ts";
+import requestBody from "../models/usersModel.ts";
 const users = db.collection("users");
 
-interface requestBody {
-  username: String;
-  name: String;
-}
 export const CreateNewUser = async (context: Context, next: any) => {
   // getting the body of the request
   const body = await context.request.body({
